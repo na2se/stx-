@@ -1,0 +1,99 @@
+@import "mixins";
+@import "vars";
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  color: #111;
+}
+
+.header {
+  $h: 80px;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 50px; //양끝공간만들기
+  height: $h; //헤더 높이
+  overflow: hidden; //80넘는거 짤라버리기
+  // background-color: #fff; //헤더가 색을 가지면 안됨
+  transition: all 0.25s ease;
+  z-index: 2;
+  color: #111;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  &::after {
+    //헤더 하얀부분 아래로
+    content: "";
+    display: block;
+    height: 400px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    top: 80px;
+    z-index: -1;
+  }
+  &::before {
+    //헤더 하얀부분 80px은 before가 담당
+    content: "";
+    display: block;
+    height: 80px;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+  }
+  &.on {
+    height: 400px;
+  }
+  .logo {
+    height: $h;
+    a {
+      display: flex;
+      align-items: center;
+      height: $h;
+      img {
+        height: 30px;
+      }
+    }
+  }
+  .gnb {
+    &__list {
+      display: flex;
+      justify-content: center;
+      > li {
+        > a {
+          font-size: 18px;
+          font-weight: 700;
+          height: $h;
+          display: flex;
+          align-items: center;
+          padding: 0 40px;
+        }
+      }
+      &--sub {
+        color: #fff;
+        padding: 30px 0;
+        li {
+          &:nth-child(1) {
+            margin-top: 15px;
+          }
+          a {
+            display: block;
+            padding: 5px 0 5px 40px;
+          }
+        }
+      }
+    }
+  }
+  .language {
+    display: flex;
+    align-items: center; //높이헤더랑 같게 하고 center걸면 language는 고정됨
+    height: 80px;
+    span {
+      font-size: 11px;
+      padding: 0 5px;
+    }
+  }
+}

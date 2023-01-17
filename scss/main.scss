@@ -1,0 +1,140 @@
+@import "mixins";
+@import "vars";
+
+.container {
+  margin: 100px 0;
+}
+
+.main-visual {
+  height: 100vh; //swiper적용하려고 높이줌
+
+  ul {
+    li {
+      height: 100vh;
+      background-position: 50%;
+      background-size: cover;
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        bottom: 50px;
+        left: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+  &--visual01 {
+    background-image: url("../images/main/visual01.jpg");
+  }
+  &--visual02 {
+    background-image: url("../images/main/visual02.jpg");
+  }
+  &--visual03 {
+    background-image: url("../images/main/visual03.jpg");
+  }
+  &__txt {
+    position: absolute;
+    top: calc(50% - 80px); //이미지 absolute처리해서 헤더랑 곂치는 만큼 빼줌
+    left: 200px;
+    z-index: 2;
+    color: #fff;
+    &::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 5px;
+      position: absolute;
+      top: -40px;
+      background-color: red;
+    }
+    .word {
+      overflow: hidden;
+    }
+    &--main {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1.2;
+    }
+    &--sub {
+      font-size: 24px;
+    }
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+    z-index: 3;
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      opacity: 1;
+      background-color: #fff;
+      &-active {
+        background-color: rgb(86, 88, 194);
+      }
+    }
+  }
+
+  .material-icons {
+    position: absolute;
+    bottom: 50px;
+    left: calc(50% - 17px);
+    z-index: 3;
+    padding: 5px;
+    color: #fff;
+    border: 0.5px solid white;
+    border-radius: 100%;
+  }
+}
+
+.business {
+  position: relative;
+  text-align: center;
+  &-txt {
+    h2 {
+      &::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 5px;
+        position: absolute;
+        top: 68px;
+        left: calc(50% - 17px);
+        background-color: red;
+      }
+    }
+    p {
+      margin-bottom: 50px;
+      font-weight: 100;
+    }
+  }
+  &-list {
+    height: 420px;
+    background-image: url("../images/main/img_business.png");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &-sub {
+      display: flex;
+      justify-content: center;
+      li {
+        display: inline-block;
+        width: 240px;
+        height: 420px;
+        font-size: 24px;
+        padding-top: 90px;
+        color: #fff;
+        a {
+          display: inline-block;
+          width: 240px;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
